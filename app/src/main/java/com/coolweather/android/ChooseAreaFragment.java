@@ -1,15 +1,10 @@
 package com.coolweather.android;
 
-import android.app.Fragment;
-
-/**
- * Created by lenovo on 2017/12/30.
- */
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +31,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ChooseAreaFragment extends android.app.Fragment {
 
+
+public class ChooseAreaFragment extends Fragment {
     private static final String TAG = "ChooseAreaFragment";
 
     public static final int LEVEL_PROVINCE = 0;
@@ -57,7 +53,6 @@ public class ChooseAreaFragment extends android.app.Fragment {
     private ArrayAdapter<String> adapter;
 
     private List<String> dataList = new ArrayList<>();
-
     /**
      * 省列表
      */
@@ -88,7 +83,6 @@ public class ChooseAreaFragment extends android.app.Fragment {
      */
     private int currentLevel;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -100,7 +94,6 @@ public class ChooseAreaFragment extends android.app.Fragment {
         listView.setAdapter(adapter);
         return view;
     }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -114,19 +107,19 @@ public class ChooseAreaFragment extends android.app.Fragment {
                     selectedCity = cityList.get(position);
                     queryCounties();
                 } /**  课本P524 else if (currentLevel == LEVEL_COUNTY) {
-                    String weatherId = countyList.get(position).getWeatherId();
-                    if (getActivity() instanceof MainActivity) {
-                        Intent intent = new Intent(getActivity(), WeatherActivity.class);
-                        intent.putExtra("weather_id", weatherId);
-                        startActivity(intent);
-                        getActivity().finish();
-                    } /**else if (getActivity() instanceof WeatherActivity) {
-                        WeatherActivity activity = (WeatherActivity) getActivity();
-                        activity.drawerLayout.closeDrawers();
-                        activity.swipeRefresh.setRefreshing(true);
-                        activity.requestWeather(weatherId);
-                    }
-                }**/
+                 String weatherId = countyList.get(position).getWeatherId();
+                 if (getActivity() instanceof MainActivity) {
+                 Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                 intent.putExtra("weather_id", weatherId);
+                 startActivity(intent);
+                 getActivity().finish();
+                 } /**else if (getActivity() instanceof WeatherActivity) {
+                 WeatherActivity activity = (WeatherActivity) getActivity();
+                 activity.drawerLayout.closeDrawers();
+                 activity.swipeRefresh.setRefreshing(true);
+                 activity.requestWeather(weatherId);
+                 }
+                 }**/
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -278,3 +271,6 @@ public class ChooseAreaFragment extends android.app.Fragment {
     }
 
 }
+
+
+
